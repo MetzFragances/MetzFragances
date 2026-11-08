@@ -1,0 +1,1529 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>METZ PERFUMES | Fragancias Exclusivas & Elegancia Atemporal</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        moss: {
+                            DEFAULT: '#3D432D',
+                            dark: '#2A2F1F',
+                            light: '#535B3E',
+                            subtle: '#3d432d15'
+                        },
+                        sage: '#7A7B69',
+                        ivory: {
+                            DEFAULT: '#F4EFE6',
+                            light: '#FAF7F2',
+                            dark: '#E9E2D5'
+                        },
+                        gold: {
+                            DEFAULT: '#C4A47C',
+                            dark: '#A38157',
+                            light: '#E6D3B8'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'Didot', 'Georgia', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            background-color: #F4EFE6;
+            color: #2A2F1F;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+        /* Glassmorphism effects */
+        .glass-panel {
+            background: rgba(244, 239, 230, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .glass-dark {
+            background: rgba(42, 47, 31, 0.92);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #E9E2D5;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #7A7B69;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3D432D;
+        }
+        /* Shimmer effect for buttons */
+        .btn-gold-shimmer {
+            background: linear-gradient(135deg, #C4A47C 0%, #D8BE9A 50%, #A38157 100%);
+            background-size: 200% 200%;
+            transition: all 0.4s ease;
+        }
+        .btn-gold-shimmer:hover {
+            background-position: right center;
+            box-shadow: 0 8px 25px -5px rgba(196, 164, 124, 0.5);
+        }
+        /* Modal transitions */
+        .modal-enter {
+            opacity: 0;
+            transform: scale(0.95);
+        }
+        .modal-active {
+            opacity: 1;
+            transform: scale(1);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-gold selection:text-white">
+
+    <!-- TOP ANNOUNCEMENT BAR -->
+    <div class="bg-moss-dark text-ivory text-xs text-center py-2 px-4 tracking-widest uppercase flex justify-between items-center z-50">
+        <div class="hidden md:block text-gold-light text-[11px]"><i class="fa-solid fa-gem mr-1"></i> Fragancias 100% Originales & Importadas</div>
+        <div class="w-full md:w-auto text-center font-medium">✨ Envíos gratis en compras mayores a $150 USD | Atención Personalizada</div>
+        <div class="hidden md:flex space-x-4 text-[11px] text-sage">
+            <span><i class="fa-brands fa-whatsapp text-gold"></i> Asesoría Olfativa</span>
+        </div>
+    </div>
+
+    <!-- MAIN STICKY NAVBAR -->
+    <header class="sticky top-0 z-40 glass-panel border-b border-sage/20 transition-all duration-300" id="mainHeader">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+
+                <!-- Mobile Menu Button -->
+                <div class="flex items-center lg:hidden">
+                    <button id="mobileMenuBtn" class="text-moss p-2 rounded-md hover:bg-moss/10 focus:outline-none">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+
+                <!-- BRAND LOGO (Integrated fine line art + METZ title) -->
+                <a href="#" class="flex items-center space-x-3 group">
+                    <div class="w-10 h-10 text-moss group-hover:text-gold transition-colors duration-300 flex items-center justify-center">
+                        <!-- Line art perfume bottle logo SVG matching prompt image -->
+                        <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="w-full h-full">
+                            <rect x="35" y="10" width="30" height="12" rx="2" stroke-width="2.5"/>
+                            <path d="M42 22 V30 H58 V22" stroke-width="2.5"/>
+                            <path d="M25 35 C25 30 35 30 50 30 C65 30 75 30 75 35 V82 C75 88 65 90 50 90 C35 90 25 88 25 82 Z" stroke-width="3"/>
+                            <circle cx="50" cy="54" r="14" stroke-width="2" stroke-dasharray="3 2"/>
+                            <!-- Artful line patterns inside bottle -->
+                            <path d="M 30 65 Q 40 58 50 65 T 70 65" stroke-width="1.5" opacity="0.7"/>
+                            <path d="M 28 73 Q 40 68 50 73 T 72 73" stroke-width="1.5" opacity="0.7"/>
+                            <path d="M 32 80 Q 40 76 50 80 T 68 80" stroke-width="1.5" opacity="0.7"/>
+                        </svg>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-serif text-2xl font-bold tracking-widest text-moss leading-none group-hover:text-gold transition-colors">METZ</span>
+                        <span class="text-[9px] tracking-[0.3em] uppercase text-sage font-medium -mt-0.5">PERFUMES</span>
+                    </div>
+                </a>
+
+                <!-- DESKTOP NAVIGATION -->
+                <nav class="hidden lg:flex space-x-8 text-sm font-medium tracking-wide uppercase text-moss">
+                    <button onclick="filterCategory('all')" class="hover:text-gold transition-colors py-2 border-b-2 border-transparent hover:border-gold">Catálogo Completo</button>
+                    <button onclick="filterCategory('woman')" class="hover:text-gold transition-colors py-2 border-b-2 border-transparent hover:border-gold">Mujer</button>
+                    <button onclick="filterCategory('man')" class="hover:text-gold transition-colors py-2 border-b-2 border-transparent hover:border-gold">Hombre</button>
+                    <button onclick="filterCategory('neutral')" class="hover:text-gold transition-colors py-2 border-b-2 border-transparent hover:border-gold">Unisex / Neutral</button>
+                    <button onclick="filterCategory('set')" class="hover:text-gold transition-colors py-2 border-b-2 border-transparent hover:border-gold">Sets de Regalo</button>
+                </nav>
+
+                <!-- RIGHT ACTION BUTTONS -->
+                <div class="flex items-center space-x-3 sm:space-x-4">
+                    <!-- Search Trigger -->
+                    <button id="openSearchBtn" class="p-2 text-moss hover:text-gold transition-colors rounded-full hover:bg-moss/5" title="Buscar Fragancia">
+                        <i class="fa-solid fa-magnifying-glass text-lg"></i>
+                    </button>
+
+                    <!-- Quiz / Scent Finder Trigger -->
+                    <button onclick="openQuizModal()" class="hidden sm:flex items-center space-x-2 text-xs font-semibold uppercase tracking-wider bg-moss/10 text-moss px-3 py-2 rounded-full hover:bg-moss hover:text-ivory transition-all border border-moss/20">
+                        <i class="fa-solid fa-wand-magic-sparkles text-gold"></i>
+                        <span>Test Olfativo</span>
+                    </button>
+
+                    <!-- Favorites Icon -->
+                    <button onclick="toggleFavoritesDrawer()" class="p-2 text-moss hover:text-gold transition-colors relative" title="Favoritos">
+                        <i class="fa-regular fa-heart text-xl"></i>
+                        <span id="favCount" class="absolute -top-1 -right-1 bg-gold text-moss-dark font-bold text-[10px] w-4 h-4 rounded-full flex items-center justify-center opacity-0 transition-opacity">0</span>
+                    </button>
+
+                    <!-- Shopping Cart Trigger -->
+                    <button id="cartBtn" onclick="toggleCartDrawer()" class="p-2 text-moss hover:text-gold transition-colors relative flex items-center space-x-2 bg-moss text-ivory px-4 py-2 rounded-full shadow-md hover:bg-moss-dark">
+                        <i class="fa-solid fa-bag-shopping text-sm text-gold"></i>
+                        <span class="text-xs font-semibold tracking-wider hidden sm:inline">BOLSA</span>
+                        <span id="cartBadge" class="bg-gold text-moss-dark font-bold text-xs px-2 py-0.5 rounded-full ml-1">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- SEARCH OVERLAY / DROPDOWN -->
+        <div id="searchBarContainer" class="hidden border-t border-sage/20 bg-ivory-light py-4 px-4 sm:px-8 shadow-inner transition-all">
+            <div class="max-w-3xl mx-auto flex items-center space-x-3">
+                <i class="fa-solid fa-magnifying-glass text-sage text-lg"></i>
+                <input type="text" id="searchInput" placeholder="Buscar por marca (Dior, Chanel, Valentino, Tom Ford...) o nombre del perfume..." 
+                       class="w-full bg-transparent border-b-2 border-sage/40 py-2 text-moss text-base focus:outline-none focus:border-gold placeholder:text-sage/60 font-medium" 
+                       onkeyup="handleSearch(this.value)">
+                <button onclick="closeSearchBar()" class="text-sage hover:text-moss text-sm font-semibold">CERRAR</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MOBILE MENU DRAWER -->
+    <div id="mobileMenu" class="fixed inset-0 bg-moss-dark/60 backdrop-blur-sm z-50 hidden transition-opacity">
+        <div class="w-4/5 max-w-xs bg-ivory h-full shadow-2xl p-6 flex flex-col justify-between">
+            <div>
+                <div class="flex justify-between items-center mb-8 border-b border-sage/20 pb-4">
+                    <div class="font-serif text-xl font-bold text-moss">METZ PERFUMES</div>
+                    <button id="closeMobileMenuBtn" class="text-moss text-xl p-2"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <nav class="flex flex-col space-y-4 font-medium uppercase tracking-wider text-sm text-moss">
+                    <a href="#catalogo" onclick="closeMobileMenu(); filterCategory('all')" class="hover:text-gold py-2 border-b border-sage/10">Catálogo Completo</a>
+                    <a href="#catalogo" onclick="closeMobileMenu(); filterCategory('woman')" class="hover:text-gold py-2 border-b border-sage/10">Colección Mujer</a>
+                    <a href="#catalogo" onclick="closeMobileMenu(); filterCategory('man')" class="hover:text-gold py-2 border-b border-sage/10">Colección Hombre</a>
+                    <a href="#catalogo" onclick="closeMobileMenu(); filterCategory('neutral')" class="hover:text-gold py-2 border-b border-sage/10">Neutral / Unisex</a>
+                    <a href="#catalogo" onclick="closeMobileMenu(); filterCategory('set')" class="hover:text-gold py-2 border-b border-sage/10">Sets de Regalo</a>
+                </nav>
+            </div>
+            <div class="border-t border-sage/20 pt-6">
+                <button onclick="closeMobileMenu(); openQuizModal()" class="w-full btn-gold-shimmer text-moss-dark font-bold py-3 px-4 rounded-xl text-xs uppercase tracking-widest flex items-center justify-center space-x-2 shadow-md">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    <span>Test Olfativo Personalizado</span>
+                </button>
+                <div class="text-center text-xs text-sage mt-6">
+                    METZ PERFUMES © 2025
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section class="relative overflow-hidden py-16 lg:py-24 bg-gradient-to-br from-moss-dark via-moss to-moss-dark text-ivory">
+        <!-- Abstract background glow elements matching Moss Ivory & Gold palette -->
+        <div class="absolute top-0 right-0 w-96 h-96 bg-gold/15 rounded-full filter blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-0 left-10 w-80 h-80 bg-sage/20 rounded-full filter blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left text content -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center space-x-2 bg-gold/20 border border-gold/40 px-3 py-1 rounded-full text-gold-light text-xs tracking-widest uppercase font-semibold">
+                        <span class="w-2 h-2 rounded-full bg-gold animate-pulse"></span>
+                        <span>Catálogo Internacional de Lujo</span>
+                    </div>
+                    <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight tracking-tight text-ivory-light">
+                        Fragancias Exclusivas & <br class="hidden sm:inline">
+                        <span class="italic font-normal text-gold">Elegancia Atemporal</span>
+                    </h1>
+                    <p class="text-sage-light text-base sm:text-lg max-w-2xl font-light leading-relaxed text-ivory/80">
+                        Descubre una selección magistral de casas de alta perfumería mundial. Diseñadas para dejar una huella olfativa inolvidable en cada piel.
+                    </p>
+                    
+                    <div class="pt-4 flex flex-col sm:flex-row items-center justify-center lg:justify-start space-y-3 sm:space-y-0 sm:space-x-4">
+                        <a href="#catalogo" class="w-full sm:w-auto btn-gold-shimmer text-moss-dark font-bold px-8 py-4 rounded-xl text-xs uppercase tracking-widest text-center shadow-xl transform hover:-translate-y-0.5 transition-all">
+                            Explorar Colección
+                        </a>
+                        <button onclick="openQuizModal()" class="w-full sm:w-auto bg-ivory/10 hover:bg-ivory/20 text-ivory border border-ivory/30 font-medium px-6 py-4 rounded-xl text-xs uppercase tracking-widest text-center transition-all flex items-center justify-center space-x-2">
+                            <i class="fa-solid fa-sparkles text-gold"></i>
+                            <span>Encuentra tu Aroma Ideal</span>
+                        </button>
+                    </div>
+
+                    <!-- Trust Indicators -->
+                    <div class="pt-8 grid grid-cols-3 gap-4 border-t border-ivory/10 text-center lg:text-left">
+                        <div>
+                            <div class="font-serif text-xl sm:text-2xl font-bold text-gold">+100</div>
+                            <div class="text-[10px] sm:text-xs text-ivory/60 uppercase tracking-wider">Perfumes de Alta Gama</div>
+                        </div>
+                        <div>
+                            <div class="font-serif text-xl sm:text-2xl font-bold text-gold">100%</div>
+                            <div class="text-[10px] sm:text-xs text-ivory/60 uppercase tracking-wider">Garantía de Autenticidad</div>
+                        </div>
+                        <div>
+                            <div class="font-serif text-xl sm:text-2xl font-bold text-gold">VIP</div>
+                            <div class="text-[10px] sm:text-xs text-ivory/60 uppercase tracking-wider">Atención Olfativa</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Hero Visual Card -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative w-full max-w-sm">
+                        <!-- Decorative Frame -->
+                        <div class="absolute -inset-2 rounded-3xl bg-gradient-to-r from-gold via-sage to-gold opacity-30 blur-lg"></div>
+                        <div class="relative bg-moss-dark/80 border border-gold/30 rounded-2xl p-6 text-center space-y-6 shadow-2xl backdrop-blur-md">
+                            
+                            <!-- Large Icon Emblem -->
+                            <div class="w-24 h-24 mx-auto text-gold flex items-center justify-center p-2 bg-moss/50 rounded-full border border-gold/20 shadow-inner">
+                                <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="35" y="10" width="30" height="12" rx="2"/>
+                                    <path d="M42 22 V30 H58 V22"/>
+                                    <path d="M25 35 C25 30 35 30 50 30 C65 30 75 30 75 35 V82 C75 88 65 90 50 90 C35 90 25 88 25 82 Z"/>
+                                    <circle cx="50" cy="54" r="14" stroke-dasharray="3 2"/>
+                                    <path d="M 30 65 Q 40 58 50 65 T 70 65"/>
+                                </svg>
+                            </div>
+
+                            <div>
+                                <span class="text-xs uppercase tracking-[0.25em] text-gold font-semibold">Fragancia de la Semana</span>
+                                <h3 class="font-serif text-2xl text-ivory font-bold mt-1">Baccarat Rouge 540</h3>
+                                <p class="text-sage-light text-xs mt-2 italic">Maison Francis Kurkdjian • Eau de Parfum</p>
+                            </div>
+
+                            <div class="bg-moss/80 rounded-xl p-3 border border-sage/20 text-xs text-ivory/80 flex justify-between items-center">
+                                <span>Notas principales:</span>
+                                <span class="text-gold font-medium">Jazmín • Azafrán • Ámbar</span>
+                            </div>
+
+                            <button onclick="quickViewProduct('mfk-baccarat')" class="w-full bg-gold hover:bg-gold-dark text-moss-dark font-bold py-3 rounded-xl text-xs uppercase tracking-wider transition-colors shadow-md">
+                                Ver Detalles Exclusivos
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CATALOG MAIN SECTION -->
+    <main id="catalogo" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 flex-grow">
+        
+        <!-- SECTION HEADER & FILTERS -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 pb-6 border-b border-sage/20 gap-6">
+            <div>
+                <span class="text-xs uppercase tracking-[0.25em] text-gold font-bold">Catálogo Oficial</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-moss mt-1">Nuestra Colección</h2>
+                <p class="text-sage text-sm mt-1">Filtra por género o busca por tu casa diseñadora preferida.</p>
+            </div>
+
+            <!-- Category Filter Pills -->
+            <div class="flex flex-wrap gap-2" id="categoryFilters">
+                <button onclick="filterCategory('all')" data-cat="all" class="cat-btn active bg-moss text-ivory px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider transition-all border border-moss">
+                    Todos
+                </button>
+                <button onclick="filterCategory('woman')" data-cat="woman" class="cat-btn bg-ivory-dark text-moss hover:bg-moss hover:text-ivory px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider transition-all border border-sage/30">
+                    Mujer
+                </button>
+                <button onclick="filterCategory('man')" data-cat="man" class="cat-btn bg-ivory-dark text-moss hover:bg-moss hover:text-ivory px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider transition-all border border-sage/30">
+                    Hombre
+                </button>
+                <button onclick="filterCategory('neutral')" data-cat="neutral" class="cat-btn bg-ivory-dark text-moss hover:bg-moss hover:text-ivory px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider transition-all border border-sage/30">
+                    Neutral / Unisex
+                </button>
+                <button onclick="filterCategory('set')" data-cat="set" class="cat-btn bg-ivory-dark text-moss hover:bg-moss hover:text-ivory px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider transition-all border border-sage/30">
+                    Sets de Regalo
+                </button>
+            </div>
+        </div>
+
+        <!-- PRODUCTS COUNTER AND ACTIVE FILTERS BANNER -->
+        <div class="flex justify-between items-center text-xs text-sage mb-6 font-medium">
+            <span id="productCounter">Mostrando todos los perfumes (32)</span>
+            <div class="flex items-center space-x-2">
+                <span>Ordenar por:</span>
+                <select id="sortSelect" onchange="sortProducts(this.value)" class="bg-transparent border border-sage/30 rounded-md py-1 px-2 text-moss focus:outline-none focus:border-gold">
+                    <option value="featured">Destacados</option>
+                    <option value="name-asc">Nombre (A-Z)</option>
+                    <option value="brand">Marca</option>
+                    <option value="price-low">Precio: Menor a Mayor</option>
+                    <option value="price-high">Precio: Mayor a Menor</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- PRODUCT GRID CONTAINER -->
+        <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8">
+            <!-- Dynamic items rendered by JavaScript -->
+        </div>
+
+        <!-- EMPTY STATE (if search/filter yields no results) -->
+        <div id="emptyState" class="hidden py-16 text-center space-y-4">
+            <div class="text-sage text-5xl"><i class="fa-regular fa-compass"></i></div>
+            <h3 class="font-serif text-2xl font-bold text-moss">No se encontraron fragancias</h3>
+            <p class="text-sage text-sm">Intenta ajustar tu búsqueda o seleccionar otra categoría.</p>
+            <button onclick="resetFilters()" class="btn-gold-shimmer text-moss-dark font-bold px-6 py-2 rounded-xl text-xs uppercase tracking-wider">
+                Restablecer Filtros
+            </button>
+        </div>
+
+    </main>
+
+    <!-- SHOPPING CART SLIDE-OVER DRAWER -->
+    <div id="cartDrawer" class="fixed inset-0 bg-moss-dark/60 backdrop-blur-sm z-50 hidden transition-opacity">
+        <div class="absolute inset-y-0 right-0 w-full max-w-md bg-ivory h-full shadow-2xl flex flex-col justify-between transform transition-transform">
+            
+            <!-- Drawer Header -->
+            <div class="p-6 border-b border-sage/20 bg-ivory-light flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                    <i class="fa-solid fa-bag-shopping text-gold text-xl"></i>
+                    <h3 class="font-serif text-xl font-bold text-moss">Bolsa de Compras</h3>
+                </div>
+                <button onclick="toggleCartDrawer()" class="text-moss hover:text-gold text-xl p-1">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Shipping Progress Bar -->
+            <div class="bg-moss/10 px-6 py-3 border-b border-sage/20">
+                <div class="flex justify-between text-xs text-moss font-semibold mb-1">
+                    <span id="shippingText">Envío Gratis superando $150 USD</span>
+                    <span id="shippingPercent">0%</span>
+                </div>
+                <div class="w-full bg-sage/20 rounded-full h-2 overflow-hidden">
+                    <div id="shippingBar" class="bg-gold h-full transition-all duration-500 w-0"></div>
+                </div>
+            </div>
+
+            <!-- Cart Items Container -->
+            <div id="cartItemsContainer" class="p-6 flex-grow overflow-y-auto space-y-4 divide-y divide-sage/10">
+                <!-- Cart elements inserted dynamically -->
+            </div>
+
+            <!-- Drawer Footer / Checkout -->
+            <div class="p-6 border-t border-sage/20 bg-ivory-light space-y-4">
+                <div class="space-y-1 text-sm">
+                    <div class="flex justify-between text-sage">
+                        <span>Subtotal:</span>
+                        <span id="cartSubtotal" class="font-semibold text-moss">$0.00 USD</span>
+                    </div>
+                    <div class="flex justify-between text-sage text-xs">
+                        <span>Envío estimado:</span>
+                        <span id="cartShippingCost" class="font-medium text-moss">Calculando...</span>
+                    </div>
+                    <div class="flex justify-between text-base font-bold text-moss pt-2 border-t border-sage/20">
+                        <span>Total:</span>
+                        <span id="cartTotal" class="text-gold-dark">$0.00 USD</span>
+                    </div>
+                </div>
+
+                <div class="space-y-2">
+                    <button onclick="processWhatsAppCheckout()" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-3.5 px-4 rounded-xl text-xs uppercase tracking-widest flex items-center justify-center space-x-2 shadow-lg transition-all">
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                        <span>Pedir por WhatsApp</span>
+                    </button>
+                    <button onclick="simulatedCheckout()" class="w-full btn-gold-shimmer text-moss-dark font-bold py-3.5 px-4 rounded-xl text-xs uppercase tracking-widest text-center shadow-md">
+                        Comprar Directo (Checkout)
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- PRODUCT DETAIL QUICK VIEW MODAL -->
+    <div id="productModal" class="fixed inset-0 bg-moss-dark/70 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-ivory border border-gold/30 w-full max-w-3xl rounded-2xl shadow-2xl overflow-hidden relative max-h-[90vh] flex flex-col md:flex-row modal-enter" id="productModalContent">
+            
+            <!-- Close Button -->
+            <button onclick="closeProductModal()" class="absolute top-4 right-4 z-10 w-8 h-8 rounded-full bg-moss/10 hover:bg-moss hover:text-ivory text-moss flex items-center justify-center transition-colors">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <!-- Modal Product Graphic/Icon side -->
+            <div class="md:w-1/2 bg-moss-dark p-8 flex flex-col items-center justify-center text-center relative overflow-hidden text-ivory">
+                <div class="absolute inset-0 bg-gold/10 rounded-full blur-2xl"></div>
+                <div class="w-32 h-32 text-gold mb-4 relative z-10">
+                    <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="35" y="10" width="30" height="12" rx="2"/>
+                        <path d="M42 22 V30 H58 V22"/>
+                        <path d="M25 35 C25 30 35 30 50 30 C65 30 75 30 75 35 V82 C75 88 65 90 50 90 C35 90 25 88 25 82 Z"/>
+                        <circle cx="50" cy="54" r="14" stroke-dasharray="3 2"/>
+                        <path d="M 30 65 Q 40 58 50 65 T 70 65"/>
+                    </svg>
+                </div>
+                <span id="modalGenderBadge" class="px-3 py-1 bg-gold/20 border border-gold/40 text-gold-light text-[10px] uppercase font-bold rounded-full mb-2"></span>
+                <span id="modalVolume" class="text-xs text-sage-light tracking-widest font-mono"></span>
+            </div>
+
+            <!-- Modal Details Side -->
+            <div class="md:w-1/2 p-6 sm:p-8 flex flex-col justify-between overflow-y-auto">
+                <div class="space-y-4">
+                    <div>
+                        <span id="modalBrand" class="text-xs font-bold tracking-widest text-gold uppercase"></span>
+                        <h3 id="modalName" class="font-serif text-2xl font-bold text-moss mt-1"></h3>
+                        <p id="modalConcentration" class="text-xs text-sage italic"></p>
+                    </div>
+
+                    <div class="text-xl font-bold text-moss-dark" id="modalPrice"></div>
+
+                    <div class="space-y-2 border-t border-b border-sage/20 py-4 text-xs text-moss">
+                        <div class="font-bold text-moss uppercase tracking-wider">Perfil Olfativo:</div>
+                        <p id="modalNotes" class="text-sage italic leading-relaxed"></p>
+                        <div class="pt-2 font-bold text-moss uppercase tracking-wider">Descripción:</div>
+                        <p id="modalDescription" class="text-sage leading-relaxed"></p>
+                    </div>
+                </div>
+
+                <div class="pt-6 flex space-x-3">
+                    <button id="modalAddToCartBtn" class="flex-1 btn-gold-shimmer text-moss-dark font-bold py-3 px-4 rounded-xl text-xs uppercase tracking-wider text-center shadow-md">
+                        Añadir a la Bolsa
+                    </button>
+                    <button id="modalFavBtn" class="p-3 border border-sage/30 rounded-xl text-moss hover:text-gold transition-colors">
+                        <i class="fa-regular fa-heart text-lg"></i>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- FRAGRANCE FINDER QUIZ MODAL -->
+    <div id="quizModal" class="fixed inset-0 bg-moss-dark/70 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-ivory border border-gold/40 w-full max-w-xl rounded-2xl shadow-2xl p-6 sm:p-8 relative">
+            
+            <button onclick="closeQuizModal()" class="absolute top-4 right-4 text-moss hover:text-gold text-lg">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="text-center space-y-2 mb-6">
+                <div class="w-12 h-12 rounded-full bg-gold/20 text-gold text-xl mx-auto flex items-center justify-center">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                </div>
+                <h3 class="font-serif text-2xl font-bold text-moss">Asesoría Olfativa METZ</h3>
+                <p class="text-sage text-xs">Responde 3 preguntas breves y descubre el perfume perfecto para ti.</p>
+            </div>
+
+            <!-- Quiz Step Container -->
+            <div id="quizSteps">
+                
+                <!-- Step 1: Gender Preference -->
+                <div id="quizStep1" class="space-y-4">
+                    <label class="block text-xs font-bold uppercase tracking-wider text-moss text-center">¿Para quién buscas la fragancia?</label>
+                    <div class="grid grid-cols-3 gap-3">
+                        <button onclick="setQuizAnswer('gender', 'woman')" class="p-4 border border-sage/30 hover:border-gold hover:bg-moss/5 rounded-xl text-center transition-all group">
+                            <i class="fa-solid fa-venus text-xl text-sage group-hover:text-gold mb-2 block"></i>
+                            <span class="text-xs font-semibold text-moss">Mujer</span>
+                        </button>
+                        <button onclick="setQuizAnswer('gender', 'man')" class="p-4 border border-sage/30 hover:border-gold hover:bg-moss/5 rounded-xl text-center transition-all group">
+                            <i class="fa-solid fa-mars text-xl text-sage group-hover:text-gold mb-2 block"></i>
+                            <span class="text-xs font-semibold text-moss">Hombre</span>
+                        </button>
+                        <button onclick="setQuizAnswer('gender', 'neutral')" class="p-4 border border-sage/30 hover:border-gold hover:bg-moss/5 rounded-xl text-center transition-all group">
+                            <i class="fa-solid fa-genderless text-xl text-sage group-hover:text-gold mb-2 block"></i>
+                            <span class="text-xs font-semibold text-moss">Unisex</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 2: Scent Profile (hidden by default) -->
+                <div id="quizStep2" class="hidden space-y-4">
+                    <label class="block text-xs font-bold uppercase tracking-wider text-moss text-center">¿Qué notas aromas prefieres?</label>
+                    <div class="grid grid-cols-2 gap-3">
+                        <button onclick="setQuizAnswer('style', 'sweet')" class="p-4 border border-sage/30 hover:border-gold hover:bg-moss/5 rounded-xl text-center transition-all">
+                            <span class="block font-serif text-sm font-bold text-moss">Dulce & Gourmand</span>
+                            <span class="text-[10px] text-sage">Vainilla, Caramelo, Fruta</span>
+                        </button>
+                        <button onclick="setQuizAnswer('style', 'fresh')" class="p-4 border border-sage/30 hover:border-gold hover:bg-moss/5 rounded-xl text-center transition-all">
+                            <span class="block font-serif text-sm font-bold text-moss">Fresco & Cítrico</span>
+                            <span class="text-[10px] text-sage">Brisa marina, Limón, Bergamota</span>
+                        </button>
+                        <button onclick="setQuizAnswer('style', 'woody')" class="p-4 border border-sage/30 hover:border-gold hover:bg-moss/5 rounded-xl text-center transition-all">
+                            <span class="block font-serif text-sm font-bold text-moss">Amaderado & Oud</span>
+                            <span class="text-[10px] text-sage">Madera de Cedro, Cuero, Especias</span>
+                        </button>
+                        <button onclick="setQuizAnswer('style', 'floral')" class="p-4 border border-sage/30 hover:border-gold hover:bg-moss/5 rounded-xl text-center transition-all">
+                            <span class="block font-serif text-sm font-bold text-moss">Floral Elegante</span>
+                            <span class="text-[10px] text-sage">Rosa, Jazmín, Flor Blanca</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Result Step -->
+                <div id="quizResult" class="hidden text-center space-y-4">
+                    <span class="text-xs text-gold uppercase tracking-widest font-bold">Tu Recomendación Recomendada METZ:</span>
+                    <div id="quizRecommendationCard" class="bg-moss-dark text-ivory p-4 rounded-xl border border-gold/30">
+                        <!-- Rendered by JS -->
+                    </div>
+                    <button onclick="resetQuiz()" class="text-xs text-sage hover:text-moss underline">Reiniciar Test</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-moss-dark text-ivory border-t border-gold/20 pt-16 pb-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-sage/20">
+                
+                <!-- Brand Info -->
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-8 h-8 text-gold">
+                            <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="3">
+                                <rect x="35" y="10" width="30" height="12" rx="2"/>
+                                <path d="M42 22 V30 H58 V22"/>
+                                <path d="M25 35 C25 30 35 30 50 30 C65 30 75 30 75 35 V82 C75 88 65 90 50 90 C35 90 25 88 25 82 Z"/>
+                            </svg>
+                        </div>
+                        <span class="font-serif text-2xl font-bold tracking-wider">METZ PERFUMES</span>
+                    </div>
+                    <p class="text-sage-light text-xs leading-relaxed font-light">
+                        Boutique de alta perfumería. Fragancias originales de diseñador importadas directamente para amantes de la elegancia y distinción.
+                    </p>
+                    <div class="flex space-x-3 text-gold">
+                        <a href="#" class="w-8 h-8 rounded-full bg-moss/60 hover:bg-gold hover:text-moss-dark flex items-center justify-center transition-colors"><i class="fa-brands fa-instagram text-sm"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-moss/60 hover:bg-gold hover:text-moss-dark flex items-center justify-center transition-colors"><i class="fa-brands fa-facebook-f text-sm"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-moss/60 hover:bg-gold hover:text-moss-dark flex items-center justify-center transition-colors"><i class="fa-brands fa-whatsapp text-sm"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Navigation -->
+                <div>
+                    <h4 class="font-serif text-lg font-bold text-gold mb-4">Navegación</h4>
+                    <ul class="space-y-2 text-xs text-sage-light">
+                        <li><a href="#catalogo" onclick="filterCategory('woman')" class="hover:text-gold transition-colors">Perfumes para Mujer</a></li>
+                        <li><a href="#catalogo" onclick="filterCategory('man')" class="hover:text-gold transition-colors">Perfumes para Hombre</a></li>
+                        <li><a href="#catalogo" onclick="filterCategory('neutral')" class="hover:text-gold transition-colors">Aromas Neutros / Unisex</a></li>
+                        <li><a href="#catalogo" onclick="filterCategory('set')" class="hover:text-gold transition-colors">Estuches & Discovery Sets</a></li>
+                        <li><a href="#" onclick="openQuizModal(); return false;" class="hover:text-gold transition-colors">Test Olfativo Interactivo</a></li>
+                    </ul>
+                </div>
+
+                <!-- Customer Service -->
+                <div>
+                    <h4 class="font-serif text-lg font-bold text-gold mb-4">Servicio al Cliente</h4>
+                    <ul class="space-y-2 text-xs text-sage-light">
+                        <li><a href="#" class="hover:text-gold transition-colors">Preguntas Frecuentes</a></li>
+                        <li><a href="#" class="hover:text-gold transition-colors">Políticas de Envío y Devolución</a></li>
+                        <li><a href="#" class="hover:text-gold transition-colors">Garantía de Autenticidad</a></li>
+                        <li><a href="#" class="hover:text-gold transition-colors">Términos y Condiciones</a></li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter -->
+                <div class="space-y-4">
+                    <h4 class="font-serif text-lg font-bold text-gold mb-1">Club Olfativo VIP</h4>
+                    <p class="text-sage-light text-xs">Suscríbete para recibir lanzamientos exclusivos y ofertas especiales.</p>
+                    <form onsubmit="subscribeNewsletter(event)" class="flex flex-col space-y-2">
+                        <input type="email" placeholder="Tu correo electrónico" required class="bg-moss/50 border border-sage/30 rounded-xl px-4 py-2.5 text-xs text-ivory placeholder:text-sage/60 focus:outline-none focus:border-gold">
+                        <button type="submit" class="btn-gold-shimmer text-moss-dark font-bold py-2.5 px-4 rounded-xl text-xs uppercase tracking-wider">
+                            Unirse al Club
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+
+            <!-- Bottom Credits -->
+            <div class="pt-8 flex flex-col sm:flex-row justify-between items-center text-[11px] text-sage">
+                <p>© 2025 METZ PERFUMES. Todos los derechos reservados.</p>
+                <div class="flex space-x-4 mt-4 sm:mt-0">
+                    <span><i class="fa-solid fa-lock text-gold mr-1"></i> Pago 100% Seguro</span>
+                    <span><i class="fa-solid fa-truck text-gold mr-1"></i> Envíos Nacionales</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // MASTER CATALOG DATA EXTRACTED FROM PDF
+        const catalogProducts = [
+            {
+                id: 'val-intense-miss',
+                brand: 'Valentino',
+                name: 'Intense Miss',
+                gender: 'woman',
+                genderLabel: 'Woman',
+                volume: '100ML',
+                type: 'Eau de Parfum',
+                price: 135.00,
+                notes: 'Notas florales intensas, Vainilla suave, Ámbar radiante',
+                description: 'Una interpretación seductora y elegante con alta fijación, perfecta para destacar en ocasiones de gala.',
+                featured: true
+            },
+            {
+                id: 'val-born-roma',
+                brand: 'Valentino',
+                name: 'Born In Roma',
+                gender: 'neutral',
+                genderLabel: 'Neutral',
+                volume: '100ML',
+                type: 'Eau de Parfum',
+                price: 140.00,
+                notes: 'Jazmín Bourbón, Vainilla Bourbon, Notas amaderadas de Grosella',
+                description: 'Alta costura en un frasco. Un equilibrio vanguardista entre tradición y modernidad urbana.',
+                featured: true
+            },
+            {
+                id: 'val-born-donna',
+                brand: 'Valentino',
+                name: 'Born In Roma Donna',
+                gender: 'woman',
+                genderLabel: 'Woman',
+                volume: '100ML',
+                type: 'Eau de Parfum',
+                price: 145.00,
+                notes: 'Flor de Jazmín, Vainilla dulce, Chispas picantes',
+                description: 'Femenina y sofisticada, una celebración de la individualidad moderna.',
+                featured: false
+            },
+            {
+                id: 'dior-cherie',
+                brand: 'Dior',
+                name: 'Miss Dior Cherie',
+                gender: 'woman',
+                genderLabel: 'Woman',
+                volume: '100ML',
+                type: 'Eau de Parfum',
+                price: 150.00,
+                notes: 'Mandarina verde, Fresa silvestre, Palomitas de maíz caramelizadas, Pachulí',
+                description: 'Un clásico icónico y alegre con toques dulces sofisticados.',
+                featured: true
+            },
+            {
+                id: 'lancome-lavie',
+                brand: 'Lancôme',
+                name: 'La Vie Est Belle',
+                gender: 'woman',
+                genderLabel: 'Woman',
+                volume: '75ML',
+                type: 'Eau de Parfum',
+                price: 125.00,
+                notes: 'Iris pálido, Pachulí de Bali, Vainilla gourmand',
+                description: 'La declaración de felicidad en un perfume elegante y eternamente cautivador.',
+                featured: true
+            },
+            {
+                id: 'chanel-coco',
+                brand: 'Chanel',
+                name: 'Chanel Coco',
+                gender: 'woman',
+                genderLabel: 'Woman',
+                volume: '100ML',
+                type: 'Eau de Parfum',
+                price: 175.00,
+                notes: 'Flor de Azahar, Cilantro, Durazno, Rosa de Bulgaria, Ámbar',
+                description: 'Carácter oriental lujoso e intenso, epítome del glamour parisino.',
+                featured: true
+            },
+            {
+                id: 'ysl-mon-paris',
+                brand: 'YSL',
+                name: 'Mon Paris',
+                gender: 'woman',
+                genderLabel: 'Woman',
+                volume: '100ML',
+                type: 'Eau de Parfum',
+                price: 140.00,
+                notes: 'Fresa, Frambuesa, Flor de Datura, Almizcle Blanco',
+                description: 'Sensualidad apasionada inspirada en la ciudad del amor.',
+                featured: false
+            },
+            {
+                id: 'paco-million',
+                brand: 'Paco Rabanne',
+                name: '1 Million',
+                gender: 'neutral',
+                genderLabel: 'Neutral',
+                volume: '100ML',
+                type: 'Eau de Parfum',
+                price: 120.00,
+                notes: 'Mandarina sanguínea, Canela, Acorde de cuero noble, Ámbar ketal',
+                description: 'Seductores acordes dorados para personalidades audaces.',
+                featured: true
+            },
+            {
+                id: 'creed-aventus',
+                brand: 'Creed',
+                name: 'Aventus Creed',
+                gender: 'man',
+                genderLabel: 'Man',
+                volume: '100ML',
+                type: 'Eau de Parfum',
+                price: 320.00,
+                notes: 'Piña real, Grosella negra, Madera de Abedul, Almizcle, Ámbar gris',
+                description: 'El rey de la perfumería masculina. Fuerza, poder y éxito refinado.',
+                featured: true
+            },
+            {
+                id: 'jpg-lemale-elixir',
+                brand: 'Jean Paul Gaultier',
+                name: 'Le Male Elixir',
+                gender: 'man',
+                genderLabel: 'Man',
+                volume: '125ML',
+                type: 'Elixir',
+                price: 165.00,
+                notes: 'Menta fresca, Haba Tonka, Benjuí tropical, Vainilla tostada',
+                description: 'Ardor magnético en un torso de oro fundido.',
+                featured: true
+            },
+            {
+                id: 'mfk-baccarat',
+                brand: 'Maison Francis Kurkdjian',
+                name: 'Paris Rouge 540',
+                gender: 'neutral',
+                genderLabel: 'Neutral',
+                volume: '70ML',
+                type: 'Eau de Parfum',
+                price: 340.00,
+                notes: 'Jazmín Grandiflorum, Azafrán, Madera de Cedro, Ámbar Gris',
+                description: 'Una alquimia poética y densa de aura cristalina deslumbrante.',
+                featured: true
+            },
+            {
+                id: 'ysl-edp-men',
+                brand: 'YSL',
+                name: 'YSL EDP For Men',
+                gender: 'man',
+                genderLabel: 'Man',
+                volume: '100ML',
+                type: 'Eau de Parfum',
+                price: 135.00,
+                notes: 'Manzana verde, Salvia picante, Madera de Cedro, Vetiver',
+                description: 'Para el hombre audaz que se atreve a perseguir sus pasiones.',
+                featured: false
+            },
+            {
+                id: 'chanel-bleu',
+                brand: 'Chanel',
+                name: 'Bleu de Chanel Paris',
+                gender: 'neutral',
+                genderLabel: 'Neutral',
+                volume: '100ML',
+                type: 'Eau de Parfum',
+                price: 160.00,
+                notes: 'Cítricos frescos, Incienso místico, Cedro seco, Sándalo',
+                description: 'Elegancia atemporal e independiente de la casa Chanel.',
+                featured: true
+            },
+            {
+                id: 'dior-sauvage',
+                brand: 'Dior',
+                name: 'Dior Sauvage',
+                gender: 'man',
+                genderLabel: 'Man',
+                volume: '100ML',
+                type: 'Eau de Parfum',
+                price: 145.00,
+                notes: 'Bergamota de Reggio, Pimienta Sichuan, Ambroxan amaderado',
+                description: 'Frescura salvaje e irresistiblemente noble.',
+                featured: true
+            },
+            {
+                id: 'versace-bright',
+                brand: 'Versace',
+                name: 'Bright Crystal',
+                gender: 'neutral',
+                genderLabel: 'Neutral',
+                volume: '90ML',
+                type: 'Eau de Parfum',
+                price: 115.00,
+                notes: 'Yuzu vibrante, Granada helada, Peonía, Flor de Loto',
+                description: 'Un aroma luminoso y cristalino con pura sensualidad.',
+                featured: false
+            },
+            {
+                id: 'bond-tribeca',
+                brand: 'Bond No. 9',
+                name: 'Tribeca NYC',
+                gender: 'neutral',
+                genderLabel: 'Neutral',
+                volume: '100ML',
+                type: 'Eau de Parfum',
+                price: 280.00,
+                notes: 'Cacao dulce, Avellana verde, Flor de Jazmín, Madera de Cedro',
+                description: 'Alta sofisticación cosmopolita inspirada en Manhattan.',
+                featured: false
+            },
+            {
+                id: 'prada-paradoxe',
+                brand: 'Prada',
+                name: 'Paradoxe',
+                gender: 'neutral',
+                genderLabel: 'Neutral',
+                volume: '90ML',
+                type: 'Eau de Parfum',
+                price: 155.00,
+                notes: 'Neroli fresco, Ámbar cálido (Ambrofix), Almizcle biocatalizado',
+                description: 'Reinventa la sensualidad femenina con acordes modernos sostenibles.',
+                featured: true
+            },
+            {
+                id: 'tf-lost-cherry',
+                brand: 'Tom Ford',
+                name: 'Lost Cherry',
+                gender: 'woman',
+                genderLabel: 'Woman',
+                volume: '100ML',
+                type: 'Eau de Parfum',
+                price: 310.00,
+                notes: 'Cereza negra licorosa, Almendra amarga, Rosa turca, Bálsamo del Perú',
+                description: 'Viaje prohibido a la dulzura tentadora y exuberante.',
+                featured: true
+            },
+            {
+                id: 'armani-stronger-you',
+                brand: 'Armani',
+                name: 'Strong With You Absolutely',
+                gender: 'neutral',
+                genderLabel: 'Neutral',
+                volume: '100ML',
+                type: 'Eau de Parfum',
+                price: 130.00,
+                notes: 'Ron ahumado, Castaña glaseada, Vainilla de Madagascar',
+                description: 'Poderosa adicción amaderada oriental con toques de licor refinado.',
+                featured: false
+            },
+            {
+                id: 'armani-profondo',
+                brand: 'Armani',
+                name: 'Acqua Di Giò Profondo',
+                gender: 'man',
+                genderLabel: 'Man',
+                volume: '100ML',
+                type: 'Eau de Parfum',
+                price: 135.00,
+                notes: 'Notas marinas profundas, Mandarina verde, Esencia de Romero, Pachulí',
+                description: 'Inmersión apasionante en la intensidad del océano azul.',
+                featured: false
+            },
+            {
+                id: 'tf-tobacco-vanille',
+                brand: 'Tom Ford',
+                name: 'Tobacco Vanille',
+                gender: 'neutral',
+                genderLabel: 'Neutral',
+                volume: '100ML',
+                type: 'Eau de Parfum',
+                price: 310.00,
+                notes: 'Hoja de Tabaco, Especias aromáticas, Vainilla rica, Cacao',
+                description: 'Opulento, cálido e icónico aroma de club de caballeros inglés.',
+                featured: true
+            },
+            {
+                id: 'pdm-perseus',
+                brand: 'Parfums de Marly',
+                name: 'Perseus',
+                gender: 'neutral',
+                genderLabel: 'Neutral',
+                volume: '125ML',
+                type: 'Eau de Parfum',
+                price: 290.00,
+                notes: 'Pomelo rosa, Vetiver ahumado, Ámbar gris refinado',
+                description: 'Frescura cítrica vigorizante combinada con elegancia aristocrática.',
+                featured: false
+            },
+            {
+                id: 'gucci-bloom',
+                brand: 'Gucci',
+                name: 'Gucci Bloom',
+                gender: 'woman',
+                genderLabel: 'Woman',
+                volume: '100ML',
+                type: 'Eau de Parfum',
+                price: 140.00,
+                notes: 'Tuberosa natural, Jazmín Sambac, Picante Enredadera de Rangoon',
+                description: 'Un jardín florido y exuberante que florece en la piel.',
+                featured: false
+            },
+            {
+                id: 'ch-bad-boy-cobalt',
+                brand: 'Carolina Herrera',
+                name: 'Bad Boy Cobalt',
+                gender: 'man',
+                genderLabel: 'Man',
+                volume: '100ML',
+                type: 'Eau de Parfum',
+                price: 125.00,
+                notes: 'Pimienta rosa, Ciruela negra, Trufa amaderada, Vetiver',
+                description: 'Electrizante y magnético contrastado por elegancia silvestre.',
+                featured: false
+            },
+            {
+                id: 'versace-eros',
+                brand: 'Versace',
+                name: 'Versace Eros',
+                gender: 'man',
+                genderLabel: 'Man',
+                volume: '100ML',
+                type: 'Eau de Parfum',
+                price: 120.00,
+                notes: 'Menta fresca, Manzana verde, Haba Tonka, Cedro de Atlas',
+                description: 'La pasión ardiente y el deseo de la mitología griega.',
+                featured: true
+            },
+            {
+                id: 'lv-pacific-chill',
+                brand: 'Louis Vuitton',
+                name: 'Pacific Chill',
+                gender: 'neutral',
+                genderLabel: 'Neutral',
+                volume: '100ML',
+                type: 'Eau de Parfum',
+                price: 360.00,
+                notes: 'Grosella negra, Semilla de Zanahoria, Hierbas aromáticas, Limón',
+                description: 'Inspirante brisa vital de la costa californiana.',
+                featured: true
+            },
+            {
+                id: 'lv-imagination',
+                brand: 'Louis Vuitton',
+                name: 'Imagination',
+                gender: 'neutral',
+                genderLabel: 'Neutral',
+                volume: '100ML',
+                type: 'Eau de Parfum',
+                price: 360.00,
+                notes: 'Ambrox concentrado, Té negro de China, Neroli, Jengibre picante',
+                description: 'Un impulso creativo y refinado que desata la imaginación humana.',
+                featured: true
+            },
+            {
+                id: 'lelabo-santal33',
+                brand: 'Le Labo',
+                name: 'Santal 33',
+                gender: 'neutral',
+                genderLabel: 'Neutral',
+                volume: '100ML',
+                type: 'Eau de Parfum',
+                price: 310.00,
+                notes: 'Cardamomo, Iris, Violeta, Sándalo australiano, Papiro',
+                description: 'El fenómeno de nicho más deseado. Espíritu libre amaderado.',
+                featured: true
+            },
+            {
+                id: 'creed-set-mini',
+                brand: 'Creed',
+                name: '4pcs Mini Perfume Gift Set',
+                gender: 'set',
+                genderLabel: 'Gift Set',
+                volume: '4x30ML',
+                type: 'Discovery Set',
+                price: 240.00,
+                notes: 'Incluye Aventus, Silver Mountain Water, Green Irish Tweed y Carmina',
+                description: 'Exquisita colección de miniatura para amantes del lujo extremo.',
+                featured: true
+            },
+            {
+                id: 'chanel-set-gift',
+                brand: 'Chanel',
+                name: 'Fragrance Discovery Gift Set',
+                gender: 'set',
+                genderLabel: 'Gift Set',
+                volume: '5x15ML',
+                type: 'Gift Set',
+                price: 220.00,
+                notes: 'Selección exclusiva de clásicos Chanel en estuche de edición limitada',
+                description: 'El regalo perfecto para explorar las más célebres creaciones de la casa.',
+                featured: true
+            },
+            {
+                id: 'lv-set-gift',
+                brand: 'Louis Vuitton',
+                name: 'Louis Vuitton Fragrance Discovery Set',
+                gender: 'set',
+                genderLabel: 'Gift Set',
+                volume: '4x30ML',
+                type: 'Discovery Set',
+                price: 390.00,
+                notes: 'Cuatro frascos coleccionables con los aromas más icónicos de LV',
+                description: 'Presentación de lujo absoluto con caja emblemática.',
+                featured: false
+            },
+            {
+                id: 'dior-mini-set',
+                brand: 'Dior',
+                name: 'Dior Mini Perfume Gift Set',
+                gender: 'set',
+                genderLabel: 'Gift Set',
+                volume: '4x30ML',
+                type: 'Gift Set',
+                price: 195.00,
+                notes: 'Selección de frascos icónicos Miss Dior y J’adore en miniatura',
+                description: 'Un detalle elegante para obsequiar distinción y belleza.',
+                featured: false
+            }
+        ];
+
+        // APP STATE MANAGEMENT
+        let currentProducts = [...catalogProducts];
+        let cart = [];
+        let favorites = [];
+        let activeCategory = 'all';
+        let quizAnswers = {};
+
+        // INITIALIZATION ON LOAD
+        window.addEventListener('DOMContentLoaded', () => {
+            renderProducts(currentProducts);
+            updateCartUI();
+            updateFavUI();
+        });
+
+        // RENDER PRODUCT CARDS
+        function renderProducts(products) {
+            const grid = document.getElementById('productGrid');
+            const emptyState = document.getElementById('emptyState');
+            const counter = document.getElementById('productCounter');
+
+            grid.innerHTML = '';
+            counter.innerText = `Mostrando ${products.length} fragancias disponibles`;
+
+            if (products.length === 0) {
+                grid.classList.add('hidden');
+                emptyState.classList.remove('hidden');
+                return;
+            }
+
+            grid.classList.remove('hidden');
+            emptyState.classList.add('hidden');
+
+            products.forEach(p => {
+                const isFav = favorites.includes(p.id);
+                
+                // Color badges for genders matching Moss Ivory Palette
+                let genderBg = 'bg-moss/10 text-moss border-moss/20';
+                if(p.gender === 'woman') genderBg = 'bg-rose-900/10 text-rose-900 border-rose-900/20';
+                if(p.gender === 'man') genderBg = 'bg-slate-800/10 text-slate-800 border-slate-800/20';
+                if(p.gender === 'set') genderBg = 'bg-gold/20 text-gold-dark border-gold/30';
+
+                const cardHtml = `
+                    <div class="group bg-ivory-light border border-sage/20 rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col justify-between hover:border-gold/50">
+                        <div class="relative p-6 bg-gradient-to-b from-ivory to-ivory-light flex items-center justify-center min-h-[220px]">
+                            
+                            <!-- Gender Badge -->
+                            <span class="absolute top-3 left-3 text-[10px] uppercase font-bold tracking-wider px-2.5 py-1 rounded-full border ${genderBg}">
+                                ${p.genderLabel}
+                            </span>
+
+                            <!-- Favorite Heart Button -->
+                            <button onclick="toggleFavorite('${p.id}', event)" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-ivory/80 hover:bg-gold hover:text-moss-dark flex items-center justify-center transition-all ${isFav ? 'text-rose-600' : 'text-sage'} shadow-sm">
+                                <i class="${isFav ? 'fa-solid' : 'fa-regular'} fa-heart text-sm"></i>
+                            </button>
+
+                            <!-- Line Art Bottle Emblem -->
+                            <div class="w-24 h-24 text-moss group-hover:text-gold transition-colors duration-500 transform group-hover:scale-105">
+                                <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="35" y="10" width="30" height="12" rx="2"/>
+                                    <path d="M42 22 V30 H58 V22"/>
+                                    <path d="M25 35 C25 30 35 30 50 30 C65 30 75 30 75 35 V82 C75 88 65 90 50 90 C35 90 25 88 25 82 Z"/>
+                                    <circle cx="50" cy="54" r="14" stroke-dasharray="3 2"/>
+                                    <path d="M 30 65 Q 40 58 50 65 T 70 65"/>
+                                </svg>
+                            </div>
+                        </div>
+
+                        <!-- Card Details -->
+                        <div class="p-5 flex-grow flex flex-col justify-between space-y-3 border-t border-sage/10">
+                            <div>
+                                <span class="text-[11px] font-bold text-gold tracking-widest uppercase block">${p.brand}</span>
+                                <h3 class="font-serif text-lg font-bold text-moss leading-snug group-hover:text-gold-dark transition-colors">${p.name}</h3>
+                                <p class="text-xs text-sage italic mt-0.5">${p.volume} • ${p.type}</p>
+                            </div>
+
+                            <p class="text-xs text-sage line-clamp-2 leading-relaxed font-light">${p.notes}</p>
+
+                            <div class="pt-2 flex items-center justify-between border-t border-sage/10">
+                                <div>
+                                    <span class="text-xs text-sage block">Precio</span>
+                                    <span class="text-base font-bold text-moss-dark">$${p.price.toFixed(2)} USD</span>
+                                </div>
+                                <div class="flex space-x-1">
+                                    <button onclick="quickViewProduct('${p.id}')" class="p-2.5 rounded-xl border border-sage/30 text-moss hover:bg-moss hover:text-ivory transition-colors text-xs" title="Vista Rápida">
+                                        <i class="fa-regular fa-eye"></i>
+                                    </button>
+                                    <button onclick="addToCart('${p.id}')" class="btn-gold-shimmer text-moss-dark font-bold px-3 py-2.5 rounded-xl text-xs flex items-center space-x-1 shadow-sm">
+                                        <i class="fa-solid fa-plus text-[10px]"></i>
+                                        <span>Agregar</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                grid.innerHTML += cardHtml;
+            });
+        }
+
+        // CATEGORY FILTER
+        function filterCategory(cat) {
+            activeCategory = cat;
+            
+            // Update filter pill styles
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                if (btn.getAttribute('data-cat') === cat) {
+                    btn.className = 'cat-btn active bg-moss text-ivory px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider transition-all border border-moss shadow-md';
+                } else {
+                    btn.className = 'cat-btn bg-ivory-dark text-moss hover:bg-moss hover:text-ivory px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider transition-all border border-sage/30';
+                }
+            });
+
+            applyFilters();
+        }
+
+        // SEARCH INPUT FILTER
+        function handleSearch(query) {
+            applyFilters(query);
+        }
+
+        function applyFilters(searchQuery = '') {
+            const query = (searchQuery || document.getElementById('searchInput').value).toLowerCase().trim();
+
+            currentProducts = catalogProducts.filter(p => {
+                const matchesCategory = (activeCategory === 'all') || (p.gender === activeCategory);
+                const matchesSearch = p.name.toLowerCase().includes(query) || 
+                                      p.brand.toLowerCase().includes(query) || 
+                                      p.notes.toLowerCase().includes(query);
+                return matchesCategory && matchesSearch;
+            });
+
+            renderProducts(currentProducts);
+        }
+
+        function resetFilters() {
+            document.getElementById('searchInput').value = '';
+            filterCategory('all');
+        }
+
+        // SORT PRODUCTS
+        function sortProducts(criteria) {
+            if (criteria === 'name-asc') {
+                currentProducts.sort((a, b) => a.name.localeCompare(b.name));
+            } else if (criteria === 'brand') {
+                currentProducts.sort((a, b) => a.brand.localeCompare(b.brand));
+            } else if (criteria === 'price-low') {
+                currentProducts.sort((a, b) => a.price - b.price);
+            } else if (criteria === 'price-high') {
+                currentProducts.sort((a, b) => b.price - a.price);
+            } else {
+                currentProducts = [...catalogProducts];
+            }
+            renderProducts(currentProducts);
+        }
+
+        // CART LOGIC
+        function addToCart(productId) {
+            const product = catalogProducts.find(p => p.id === productId);
+            if (!product) return;
+
+            const existing = cart.find(item => item.product.id === productId);
+            if (existing) {
+                existing.quantity += 1;
+            } else {
+                cart.push({ product: product, quantity: 1 });
+            }
+
+            updateCartUI();
+            toggleCartDrawer(true);
+        }
+
+        function updateCartQuantity(productId, delta) {
+            const item = cart.find(i => i.product.id === productId);
+            if (!item) return;
+
+            item.quantity += delta;
+            if (item.quantity <= 0) {
+                cart = cart.filter(i => i.product.id !== productId);
+            }
+            updateCartUI();
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(i => i.product.id !== productId);
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const count = cart.reduce((total, i) => total + i.quantity, 0);
+            document.getElementById('cartBadge').innerText = count;
+
+            const container = document.getElementById('cartItemsContainer');
+            const subtotalEl = document.getElementById('cartSubtotal');
+            const totalEl = document.getElementById('cartTotal');
+            const shippingCostEl = document.getElementById('cartShippingCost');
+
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div class="py-12 text-center space-y-3">
+                        <i class="fa-solid fa-bag-shopping text-4xl text-sage/40"></i>
+                        <p class="text-sage text-sm">Tu bolsa de compras está vacía.</p>
+                        <button onclick="toggleCartDrawer()" class="text-xs text-gold font-bold uppercase tracking-wider hover:underline">Ir al Catálogo</button>
+                    </div>
+                `;
+                subtotalEl.innerText = '$0.00 USD';
+                totalEl.innerText = '$0.00 USD';
+                shippingCostEl.innerText = 'Calculando...';
+                updateShippingBar(0);
+                return;
+            }
+
+            let subtotal = 0;
+            container.innerHTML = '';
+
+            cart.forEach(item => {
+                const itemTotal = item.product.price * item.quantity;
+                subtotal += itemTotal;
+
+                container.innerHTML += `
+                    <div class="pt-4 flex items-center justify-between space-x-3">
+                        <div class="w-12 h-12 bg-ivory rounded-lg border border-sage/20 flex items-center justify-center text-moss flex-shrink-0">
+                            <svg class="w-6 h-6" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="3">
+                                <rect x="35" y="10" width="30" height="12" rx="2"/>
+                                <path d="M42 22 V30 H58 V22"/>
+                                <path d="M25 35 C25 30 35 30 50 30 C65 30 75 30 75 35 V82 C75 88 65 90 50 90 C35 90 25 88 25 82 Z"/>
+                            </svg>
+                        </div>
+                        <div class="flex-grow">
+                            <h4 class="font-bold text-xs text-moss">${item.product.brand} - ${item.product.name}</h4>
+                            <span class="text-[10px] text-sage">${item.product.volume} • $${item.product.price.toFixed(2)} c/u</span>
+                            <div class="flex items-center space-x-2 mt-1">
+                                <button onclick="updateCartQuantity('${item.product.id}', -1)" class="w-5 h-5 bg-sage/20 rounded text-moss text-xs font-bold hover:bg-gold">-</button>
+                                <span class="text-xs font-semibold">${item.quantity}</span>
+                                <button onclick="updateCartQuantity('${item.product.id}', 1)" class="w-5 h-5 bg-sage/20 rounded text-moss text-xs font-bold hover:bg-gold">+</button>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <span class="text-xs font-bold text-moss block">$${itemTotal.toFixed(2)}</span>
+                            <button onclick="removeFromCart('${item.product.id}')" class="text-[10px] text-rose-700 hover:underline">Eliminar</button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            const freeShippingThreshold = 150.00;
+            const isFreeShipping = subtotal >= freeShippingThreshold;
+            const shippingCost = isFreeShipping ? 0 : 15.00;
+            const finalTotal = subtotal + shippingCost;
+
+            subtotalEl.innerText = `$${subtotal.toFixed(2)} USD`;
+            shippingCostEl.innerText = isFreeShipping ? '¡GRATIS!' : `$${shippingCost.toFixed(2)} USD`;
+            totalEl.innerText = `$${finalTotal.toFixed(2)} USD`;
+
+            updateShippingBar(subtotal);
+        }
+
+        function updateShippingBar(subtotal) {
+            const threshold = 150.00;
+            const bar = document.getElementById('shippingBar');
+            const text = document.getElementById('shippingText');
+            const percentEl = document.getElementById('shippingPercent');
+
+            const percent = Math.min(100, Math.round((subtotal / threshold) * 100));
+            bar.style.width = `${percent}%`;
+            percentEl.innerText = `${percent}%`;
+
+            if (subtotal >= threshold) {
+                text.innerText = '¡Felicidades! Tienes Envío Gratis';
+            } else {
+                const remaining = (threshold - subtotal).toFixed(2);
+                text.innerText = `Agrega $${remaining} USD para Envío Gratis`;
+            }
+        }
+
+        function toggleCartDrawer(open = null) {
+            const drawer = document.getElementById('cartDrawer');
+            if (open === true) {
+                drawer.classList.remove('hidden');
+            } else if (open === false) {
+                drawer.classList.add('hidden');
+            } else {
+                drawer.classList.toggle('hidden');
+            }
+        }
+
+        // FAVORITES LOGIC
+        function toggleFavorite(productId, event) {
+            if (event) event.stopPropagation();
+            const index = favorites.indexOf(productId);
+            if (index > -1) {
+                favorites.splice(index, 1);
+            } else {
+                favorites.push(productId);
+            }
+            updateFavUI();
+            renderProducts(currentProducts);
+        }
+
+        function updateFavUI() {
+            const countEl = document.getElementById('favCount');
+            countEl.innerText = favorites.length;
+            if (favorites.length > 0) {
+                countEl.classList.remove('opacity-0');
+            } else {
+                countEl.classList.add('opacity-0');
+            }
+        }
+
+        function toggleFavoritesDrawer() {
+            if (favorites.length === 0) {
+                alert('Aún no has guardado perfumes en tu lista de favoritos.');
+                return;
+            }
+            currentProducts = catalogProducts.filter(p => favorites.includes(p.id));
+            renderProducts(currentProducts);
+            document.getElementById('productCounter').innerText = `Mostrando tus Favoritos (${favorites.length})`;
+        }
+
+        // PRODUCT QUICK VIEW MODAL
+        function quickViewProduct(productId) {
+            const p = catalogProducts.find(item => item.id === productId);
+            if (!p) return;
+
+            document.getElementById('modalBrand').innerText = p.brand;
+            document.getElementById('modalName').innerText = p.name;
+            document.getElementById('modalConcentration').innerText = `${p.type} • Presentación de Alta Gama`;
+            document.getElementById('modalPrice').innerText = `$${p.price.toFixed(2)} USD`;
+            document.getElementById('modalNotes').innerText = p.notes;
+            document.getElementById('modalDescription').innerText = p.description;
+            document.getElementById('modalVolume').innerText = p.volume;
+            document.getElementById('modalGenderBadge').innerText = p.genderLabel;
+
+            const addBtn = document.getElementById('modalAddToCartBtn');
+            addBtn.onclick = () => {
+                addToCart(p.id);
+                closeProductModal();
+            };
+
+            const modal = document.getElementById('productModal');
+            modal.classList.remove('hidden');
+        }
+
+        function closeProductModal() {
+            document.getElementById('productModal').classList.add('hidden');
+        }
+
+        // FRAGRANCE QUIZ LOGIC
+        function openQuizModal() {
+            document.getElementById('quizModal').classList.remove('hidden');
+            resetQuiz();
+        }
+
+        function closeQuizModal() {
+            document.getElementById('quizModal').classList.add('hidden');
+        }
+
+        function setQuizAnswer(key, value) {
+            quizAnswers[key] = value;
+
+            if (key === 'gender') {
+                document.getElementById('quizStep1').classList.add('hidden');
+                document.getElementById('quizStep2').classList.remove('hidden');
+            } else if (key === 'style') {
+                document.getElementById('quizStep2').classList.add('hidden');
+                calculateQuizResult();
+            }
+        }
+
+        function calculateQuizResult() {
+            const gender = quizAnswers.gender || 'neutral';
+            const matched = catalogProducts.find(p => (gender === 'neutral' || p.gender === gender)) || catalogProducts[0];
+
+            const card = document.getElementById('quizRecommendationCard');
+            card.innerHTML = `
+                <span class="text-xs text-gold font-bold uppercase tracking-widest block">${matched.brand}</span>
+                <h4 class="font-serif text-xl font-bold mt-1 text-ivory">${matched.name}</h4>
+                <p class="text-xs text-sage-light italic mt-1">${matched.notes}</p>
+                <div class="mt-4 flex space-x-2">
+                    <button onclick="addToCart('${matched.id}'); closeQuizModal();" class="flex-1 btn-gold-shimmer text-moss-dark font-bold py-2 rounded-lg text-xs uppercase">
+                        Agregar a la Bolsa ($${matched.price.toFixed(2)})
+                    </button>
+                </div>
+            `;
+
+            document.getElementById('quizResult').classList.remove('hidden');
+        }
+
+        function resetQuiz() {
+            quizAnswers = {};
+            document.getElementById('quizStep1').classList.remove('hidden');
+            document.getElementById('quizStep2').classList.add('hidden');
+            document.getElementById('quizResult').classList.add('hidden');
+        }
+
+        // WHATSAPP INTEGRATION
+        function processWhatsAppCheckout() {
+            if (cart.length === 0) {
+                alert('Tu bolsa está vacía.');
+                return;
+            }
+
+            let text = '¡Hola! Me gustaría realizar un pedido en *METZ PERFUMES*:\n\n';
+            let subtotal = 0;
+
+            cart.forEach(item => {
+                const total = item.product.price * item.quantity;
+                subtotal += total;
+                text += `• ${item.product.brand} - ${item.product.name} (${item.product.volume}) x${item.quantity} = $${total.toFixed(2)} USD\n`;
+            });
+
+            text += `\n*Subtotal:* $${subtotal.toFixed(2)} USD`;
+            text += `\n*Envío:* ${subtotal >= 150 ? 'Gratis' : '$15.00 USD'}`;
+            text += `\n\n¿Me indican los pasos para coordinar el pago y envío? Gracias!`;
+
+            const encoded = encodeURIComponent(text);
+            window.open(`https://wa.me/?text=${encoded}`, '_blank');
+        }
+
+        function simulatedCheckout() {
+            if (cart.length === 0) {
+                alert('Tu bolsa está vacía.');
+                return;
+            }
+            alert('¡Gracias por tu compra en METZ PERFUMES! Tu pedido simulado ha sido procesado con éxito.');
+            cart = [];
+            updateCartUI();
+            toggleCartDrawer(false);
+        }
+
+        // NAVBAR SEARCH OVERLAY TOGGLE
+        document.getElementById('openSearchBtn').addEventListener('click', () => {
+            const container = document.getElementById('searchBarContainer');
+            container.classList.toggle('hidden');
+            if (!container.classList.contains('hidden')) {
+                document.getElementById('searchInput').focus();
+            }
+        });
+
+        function closeSearchBar() {
+            document.getElementById('searchBarContainer').classList.add('hidden');
+        }
+
+        // MOBILE MENU TOGGLE
+        const mobileMenu = document.getElementById('mobileMenu');
+        document.getElementById('mobileMenuBtn').addEventListener('click', () => {
+            mobileMenu.classList.remove('hidden');
+        });
+        document.getElementById('closeMobileMenuBtn').addEventListener('click', closeMobileMenu);
+
+        function closeMobileMenu() {
+            mobileMenu.classList.add('hidden');
+        }
+
+        // NEWSLETTER SIMULATION
+        function subscribeNewsletter(e) {
+            e.preventDefault();
+            alert('¡Gracias por suscribirte al Club Olfativo METZ! Recibirás nuestras novedades en breve.');
+            e.target.reset();
+        }
+    </script>
+</body>
+</html>
